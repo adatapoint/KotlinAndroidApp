@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">KotlinAndroidApp</string>
+    <string name="app_name">KotlinForAndroid</string>
+    <string name="name">Name</string>
+    <string name="age">Age</string>
 </resources>
