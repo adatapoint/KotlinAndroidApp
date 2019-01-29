@@ -6,12 +6,14 @@ import android.os.Bundle
 import android.support.v4.content.ContextCompat
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 
-class MainActivity : AppCompatActivity(), TextWatcher {
+class MainActivity : AppCompatActivity(), TextWatcher, View.OnClickListener {
+
 
     private var editName: EditText? = null // ? cuando no lo pueda inicializar con otra cosa.
     private var editAge: EditText? = null
@@ -21,6 +23,7 @@ class MainActivity : AppCompatActivity(), TextWatcher {
     private var WHITE: String = "White"
     private var ORANGE: String = "Orange"
     private var buttonColor: String = ORANGE
+    private var button: Button? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,7 +34,9 @@ class MainActivity : AppCompatActivity(), TextWatcher {
         textName = findViewById(R.id.textView_name) as TextView
         textAge = findViewById(R.id.textView_age) as TextView
         buttonExecute = findViewById(R.id.btn_execute) as Button
+        button = findViewById(R.id.btn) as Button
 
+        button!!.setOnClickListener (this)
         editName!!.addTextChangedListener(this) // !! asegura que no tenemos ningún null
         editAge!!.addTextChangedListener(this)
         buttonExecute?.setOnClickListener { changeButtonColor() }
@@ -65,5 +70,8 @@ class MainActivity : AppCompatActivity(), TextWatcher {
         }
     }
 
+    override fun onClick(v: View?) {
+        Toast.makeText(this, "onClick", Toast.LENGTH_SHORT).show()
+    }
 
 }

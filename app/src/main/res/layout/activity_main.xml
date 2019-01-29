@@ -84,6 +84,14 @@
                 android:layout_height="60dp"
                 android:id="@+id/btn_execute"
                 android:textColor="@android:color/white"/>
+        <Button
+                android:text="@string/btn_execute"
+                android:textAllCaps="false"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="100dp"
+                android:layout_height="60dp"
+                android:id="@+id/btn"
+                android:textColor="@android:color/white"/>
 
     </LinearLayout>
 
