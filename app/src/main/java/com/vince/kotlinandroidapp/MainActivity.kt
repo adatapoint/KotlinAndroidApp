@@ -18,7 +18,9 @@ class MainActivity : AppCompatActivity(), TextWatcher {
     private var textName: TextView? = null
     private var textAge: TextView? = null
     private var buttonExecute: Button? = null
-    private var buttonState: Int = 0
+    private var WHITE: String = "White"
+    private var ORANGE: String = "Orange"
+    private var buttonColor: String = ORANGE
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,12 +54,12 @@ class MainActivity : AppCompatActivity(), TextWatcher {
     }
 
     fun changeButtonColor(){
-        if(buttonState == 0) {
-            buttonState = 1
+        if(buttonColor == ORANGE) {
+            buttonColor = WHITE
             buttonExecute!!.setBackgroundColor(ContextCompat.getColor(applicationContext, R.color.colorWhite))
             buttonExecute!!.setTextColor(ContextCompat.getColor(applicationContext, R.color.colorOrange))
         } else {
-            buttonState = 0
+            buttonColor = ORANGE
             buttonExecute!!.setBackgroundColor(ContextCompat.getColor(applicationContext, R.color.colorOrange))
             buttonExecute!!.setTextColor(ContextCompat.getColor(applicationContext, R.color.colorWhite))
         }

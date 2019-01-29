@@ -23,8 +23,7 @@
                     android:inputType="textPersonName"
                     android:ems="10"
                     android:id="@+id/editText_name"
-                    android:hint="@string/name"
-            />
+                    android:hint="@string/name"/>
 
 
         </android.support.design.widget.TextInputLayout>
@@ -47,7 +46,8 @@
         <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" android:layout_marginBottom="10dp">
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp">
             <LinearLayout
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
@@ -80,8 +80,8 @@
                 android:text="@string/btn_execute"
                 android:textAllCaps="false"
                 android:layout_gravity="center_horizontal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="100dp"
+                android:layout_height="60dp"
                 android:id="@+id/btn_execute"
                 android:textColor="@android:color/white"/>
 
