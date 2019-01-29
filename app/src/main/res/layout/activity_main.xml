@@ -43,43 +43,47 @@
 
 
         </android.support.design.widget.TextInputLayout>
+
         <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content" android:layout_marginBottom="10dp">
             <LinearLayout
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent" android:layout_weight="1">
+                    android:layout_height="wrap_content">
                 <TextView
                         android:text="@string/name"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" android:layout_weight="1"/>
+                        android:layout_width="60dp"
+                        android:layout_height="wrap_content"/>
                 <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/textView_name"
-                        android:layout_weight="1"/>
+                        android:id="@+id/textView_name"/>
             </LinearLayout>
             <LinearLayout
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1">
+                    android:layout_height="wrap_content">
                 <TextView
                         android:text="@string/age"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"/>
+                        android:layout_width="60dp"
+                        android:layout_height="wrap_content"/>
                 <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/textView_age"
-                        android:layout_weight="1"/>
+                        android:id="@+id/textView_age"/>
             </LinearLayout>
 
         </LinearLayout>
-
+        <Button
+                android:text="@string/btn_execute"
+                android:textAllCaps="false"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/btn_execute"
+                android:textColor="@android:color/white"/>
 
     </LinearLayout>
 
