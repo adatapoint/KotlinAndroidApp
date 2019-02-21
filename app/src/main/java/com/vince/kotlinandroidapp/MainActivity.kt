@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.content.ContextCompat
 import android.text.Editable
+import android.text.InputType
 import android.text.TextWatcher
 import android.view.View
 import android.widget.Button
@@ -29,17 +30,18 @@ class MainActivity : AppCompatActivity(), TextWatcher, View.OnClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        editName = findViewById(R.id.editText_name) as EditText
-        editAge = findViewById(R.id.editText_age) as EditText
-        textName = findViewById(R.id.textView_name) as TextView
-        textAge = findViewById(R.id.textView_age) as TextView
-        buttonExecute = findViewById(R.id.btn_execute) as Button
-        button = findViewById(R.id.btn) as Button
+        editName = findViewById<EditText>(R.id.editText_name)
+        editAge = findViewById<EditText>(R.id.editText_age)
+        textName = findViewById<TextView>(R.id.textView_name)
+        textAge = findViewById<TextView>(R.id.textView_age)
+        buttonExecute = findViewById<Button>(R.id.btn_execute)
+        button = findViewById<Button>(R.id.btn)
 
         button!!.setOnClickListener (this)
         editName!!.addTextChangedListener(this) // !! asegura que no tenemos ningún null
         editAge!!.addTextChangedListener(this)
         buttonExecute?.setOnClickListener { changeButtonColor() }
+        editName!!.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_FLAG_CAP_CHARACTERS
 
     }
 
@@ -55,6 +57,11 @@ class MainActivity : AppCompatActivity(), TextWatcher, View.OnClickListener {
 
     override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
         textName?.text = editName?.text
+        if (editName?.equals("") ?: ("" === null)) {
+            editName!!.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_FLAG_CAP_CHARACTERS
+        } else {
+            editName!!.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_NORMAL
+        }
         textAge?.text = editAge?.text
     }
 
@@ -71,7 +78,16 @@ class MainActivity : AppCompatActivity(), TextWatcher, View.OnClickListener {
     }
 
     override fun onClick(v: View?) {
-        Toast.makeText(this, "onClick", Toast.LENGTH_SHORT).show()
+        if (editName?.text.toString().equals("")){
+            editName!!.requestFocus()
+        } else {
+            textName?.text = editName?.text.toString()
+            if (editAge?.text.toString().equals("")) {
+                editAge!!.requestFocus()
+            } else {
+                textAge?.text = editAge?.text.toString()
+            }
+        }
     }
 
 }
