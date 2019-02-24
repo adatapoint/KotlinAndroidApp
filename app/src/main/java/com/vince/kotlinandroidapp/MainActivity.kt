@@ -9,40 +9,41 @@ import android.text.InputType
 import android.text.TextWatcher
 import android.view.View
 import android.widget.*
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), TextWatcher, View.OnClickListener, CompoundButton.OnCheckedChangeListener {
 
-    private var editName: EditText? = null // ? cuando no lo pueda inicializar con otra cosa.
-    private var editAge: EditText? = null
-    private var textName: TextView? = null
-    private var textAge: TextView? = null
-    private var buttonExecute: Button? = null
+//    private var editName: EditText? = null // ? cuando no lo pueda inicializar con otra cosa.
+//    private var editAge: EditText? = null
+//    private var textName: TextView? = null
+//    private var textAge: TextView? = null
+//    private var buttonExecute: Button? = null
     private var WHITE: String = "White"
     private var ORANGE: String = "Orange"
     private var buttonColor: String = ORANGE
-    private var button: Button? = null
-    private var radioButtonMan: RadioButton? = null
-    private var radioButtonWoman: RadioButton? = null
+//    private var button: Button? = null
+//    private var radioButtonMan: RadioButton? = null
+//    private var radioButtonWoman: RadioButton? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        editName = findViewById<EditText>(R.id.editText_name)
-        editAge = findViewById<EditText>(R.id.editText_age)
-        textName = findViewById<TextView>(R.id.textView_name)
-        textAge = findViewById<TextView>(R.id.textView_age)
-        buttonExecute = findViewById<Button>(R.id.btn_execute)
-        button = findViewById<Button>(R.id.btn)
-        radioButtonMan = findViewById<RadioButton>(R.id.radioButton_M)
-        radioButtonWoman = findViewById<RadioButton>(R.id.radioButton_W)
+//        editName = findViewById<EditText>(R.id.editText_name)
+//        editAge = findViewById<EditText>(R.id.editText_age)
+//        textName = findViewById<TextView>(R.id.textView_name)
+//        textAge = findViewById<TextView>(R.id.textView_age)
+//        buttonExecute = findViewById<Button>(R.id.btn_execute)
+//        button = findViewById<Button>(R.id.btn)
+//        radioButtonMan = findViewById<RadioButton>(R.id.radioButton_M)
+//        radioButtonWoman = findViewById<RadioButton>(R.id.radioButton_W)
 
 
-        button!!.setOnClickListener (this)
-        editName!!.addTextChangedListener(this) // !! asegura que no tenemos ningún null
-        editAge!!.addTextChangedListener(this)
-        buttonExecute?.setOnClickListener { changeButtonColor() }
-        editName!!.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_FLAG_CAP_CHARACTERS
+        btn!!.setOnClickListener (this)
+        editTextName!!.addTextChangedListener(this) // !! asegura que no tenemos ningún null
+        editTextAge!!.addTextChangedListener(this)
+        btnExecute?.setOnClickListener { changeButtonColor() }
+        editTextName!!.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_FLAG_CAP_CHARACTERS
 
         radioButtonMan!!.setOnCheckedChangeListener(this)
         radioButtonWoman!!.setOnCheckedChangeListener(this)
@@ -60,42 +61,45 @@ class MainActivity : AppCompatActivity(), TextWatcher, View.OnClickListener, Com
     }
 
     override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-        textName?.text = editName?.text
-        if (editName!!.text.equals("")) {
-            editName!!.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_FLAG_CAP_CHARACTERS
+        textViewName?.text = editTextName?.text
+        if (editTextName!!.text.equals("")) {
+            editTextName!!.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_FLAG_CAP_CHARACTERS
         } else {
-            editName!!.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_NORMAL
+            editTextName!!.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_NORMAL
         }
-        textAge?.text = editAge?.text
+        editTextAge?.text = editTextAge?.text
     }
 
     fun changeButtonColor(){
         if(buttonColor == ORANGE) {
             buttonColor = WHITE
-            buttonExecute!!.setBackgroundColor(ContextCompat.getColor(applicationContext, R.color.colorWhite))
-            buttonExecute!!.setTextColor(ContextCompat.getColor(applicationContext, R.color.colorOrange))
+            btnExecute!!.setBackgroundColor(ContextCompat.getColor(applicationContext, R.color.colorWhite))
+            btnExecute!!.setTextColor(ContextCompat.getColor(applicationContext, R.color.colorOrange))
         } else {
             buttonColor = ORANGE
-            buttonExecute!!.setBackgroundColor(ContextCompat.getColor(applicationContext, R.color.colorOrange))
-            buttonExecute!!.setTextColor(ContextCompat.getColor(applicationContext, R.color.colorWhite))
+            btnExecute!!.setBackgroundColor(ContextCompat.getColor(applicationContext, R.color.colorOrange))
+            btnExecute!!.setTextColor(ContextCompat.getColor(applicationContext, R.color.colorWhite))
         }
     }
 
     override fun onClick(v: View?) {
-        if (editName?.text.toString().equals("")){
-            editName!!.requestFocus()
+        if (editTextName?.text.toString().equals("")){
+            editTextName!!.requestFocus()
         } else {
-            textName?.text = editName?.text.toString()
-            if (editAge?.text.toString().equals("")) {
-                editAge!!.requestFocus()
+            textViewName?.text = editTextName?.text.toString()
+            if (editTextAge?.text.toString().equals("")) {
+                editTextAge!!.requestFocus()
             } else {
-                textAge?.text = editAge?.text.toString()
+                textViewAge?.text = editTextAge?.text.toString()
             }
         }
     }
 
     override fun onCheckedChanged(buttonView: CompoundButton?, isChecked: Boolean) {
-        Toast.makeText(this, "Ha saleccionado una opción", Toast.LENGTH_SHORT).show()
+        when (buttonView!!.id) {
+            R.id.radioButtonMan -> Toast.makeText(this, "Ha seleccionado Hombre", Toast.LENGTH_SHORT).show()
+            R.id.radioButtonWoman -> Toast.makeText(this, "Ha seleccionado Mujer", Toast.LENGTH_SHORT).show()
+        }
     }
 
 }
