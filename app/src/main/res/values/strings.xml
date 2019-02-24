@@ -3,4 +3,6 @@
     <string name="name">Name</string>
     <string name="age">Age</string>
     <string name="btn_execute">Execute</string>
+    <string name="man">Man</string>
+    <string name="woman">Woman</string>
 </resources>

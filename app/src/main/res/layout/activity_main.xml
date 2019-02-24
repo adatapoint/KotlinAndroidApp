@@ -84,6 +84,18 @@
                 android:layout_height="60dp"
                 android:id="@+id/btn_execute"
                 android:textColor="@android:color/white"/>
+        <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:orientation="horizontal">
+            <RadioButton
+                    android:text="@string/man"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:id="@+id/radioButton_M" android:layout_weight="1"/>
+            <RadioButton
+                    android:text="@string/woman"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:id="@+id/radioButton_W" android:layout_weight="1"/>
+        </RadioGroup>
         <Button
                 android:text="@string/btn_execute"
                 android:textAllCaps="false"

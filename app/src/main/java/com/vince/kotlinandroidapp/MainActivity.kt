@@ -8,13 +8,9 @@ import android.text.Editable
 import android.text.InputType
 import android.text.TextWatcher
 import android.view.View
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 
-class MainActivity : AppCompatActivity(), TextWatcher, View.OnClickListener {
-
+class MainActivity : AppCompatActivity(), TextWatcher, View.OnClickListener, CompoundButton.OnCheckedChangeListener {
 
     private var editName: EditText? = null // ? cuando no lo pueda inicializar con otra cosa.
     private var editAge: EditText? = null
@@ -25,6 +21,8 @@ class MainActivity : AppCompatActivity(), TextWatcher, View.OnClickListener {
     private var ORANGE: String = "Orange"
     private var buttonColor: String = ORANGE
     private var button: Button? = null
+    private var radioButtonMan: RadioButton? = null
+    private var radioButtonWoman: RadioButton? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,12 +34,18 @@ class MainActivity : AppCompatActivity(), TextWatcher, View.OnClickListener {
         textAge = findViewById<TextView>(R.id.textView_age)
         buttonExecute = findViewById<Button>(R.id.btn_execute)
         button = findViewById<Button>(R.id.btn)
+        radioButtonMan = findViewById<RadioButton>(R.id.radioButton_M)
+        radioButtonWoman = findViewById<RadioButton>(R.id.radioButton_W)
+
 
         button!!.setOnClickListener (this)
         editName!!.addTextChangedListener(this) // !! asegura que no tenemos ningún null
         editAge!!.addTextChangedListener(this)
         buttonExecute?.setOnClickListener { changeButtonColor() }
         editName!!.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_FLAG_CAP_CHARACTERS
+
+        radioButtonMan!!.setOnCheckedChangeListener(this)
+        radioButtonWoman!!.setOnCheckedChangeListener(this)
 
     }
 
@@ -57,7 +61,7 @@ class MainActivity : AppCompatActivity(), TextWatcher, View.OnClickListener {
 
     override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
         textName?.text = editName?.text
-        if (editName?.equals("") ?: ("" === null)) {
+        if (editName!!.text.equals("")) {
             editName!!.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_FLAG_CAP_CHARACTERS
         } else {
             editName!!.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_NORMAL
@@ -88,6 +92,10 @@ class MainActivity : AppCompatActivity(), TextWatcher, View.OnClickListener {
                 textAge?.text = editAge?.text.toString()
             }
         }
+    }
+
+    override fun onCheckedChanged(buttonView: CompoundButton?, isChecked: Boolean) {
+        Toast.makeText(this, "Ha saleccionado una opción", Toast.LENGTH_SHORT).show()
     }
 
 }
